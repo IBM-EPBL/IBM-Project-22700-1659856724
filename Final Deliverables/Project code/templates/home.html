@@ -1,0 +1,159 @@
+{% extends "base.html" %}
+
+{% block head %}
+	<title>Nut#</title>
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/indexstyle.css')}}">
+{% endblock %}
+
+{% block body %}
+<header>
+    <nav class="navbar-inner navbar-expand-lg navigation-wrap ">
+        <div class="container">
+            <a class="navbar-brand"~>Nut#</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarText">
+
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="/">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="/foodinfo">Food Info</a>
+                    </li>
+                    {% if session['username'] %}
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="/uploader">Upload Images</a>
+                    </li>
+                    {% endif %}
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="/#aboutus">About Us</a>
+                    </li>
+                    {% if session['username'] %}
+                    <li>
+                        <a class="btn btn-outline-danger ms-2" href="{{ url_for('logout') }}">Logout</a>
+                    </li>
+                    {% else %}
+                        <li>
+                            <a class="btn btn-outline-danger ms-2" href="/login" role="button">Login</a>
+                        </li>
+                        <li>
+                            <a class="btn btn-primary ms-4" href="/signup" role="button">Register</a>
+                        </li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+<section id="home">
+
+  <div class="test">
+    <div class="main">
+        
+    </div>
+    <div class="textbox">
+        {% if session['username'] %}
+        <h1>Hi <span style="color:#1067d1;">{{ session['username'] | title }}</span></h1>
+        <!-- <a href="{{ url_for('logout') }}">Logout</a> -->
+    {% else %}
+        <h1>Welcome to  <span style="color:#f60d0d;">Nut#</span></h1>
+    {% endif %}
+    
+    <h4>Your Nutritious Personal Assistant</h4>
+    </div>
+  </div>
+               
+		
+      
+		
+	
+</section>
+
+
+<script type="text/javascript" >
+	let nav=document.querySelector(".navigation-wrap");
+	window.onscroll = function(){
+		if(document.documentElement.scrollTop > 20){
+			nav.classList.add("scroll-on");
+		}else{
+			nav.classList.remove("scroll-on");
+		}
+	}
+
+</script>
+
+<section class="feature section-padding" id="trackfood">
+	<div class="container-fluid px-0 top-banner1">
+	<div class="container">
+		<div class="feature-heading" style="visibility: visible; animation-name: zoom">
+			<h2>TO KNOW ALL THE NUTRIENTS CONTENT LEVEL PRESENT IN YOUR FOOD</h2>
+		</div>
+		<div class="serv-field row mt-4">
+                <div class="col-12 col-md-6 col-lg-4 text-center">
+                    <div class="serv-box">
+                        <div class="icon">
+                            <i class="bi bi-camera-fill"></i>
+                        </div>
+                       <h1 style="font-size: xxx-large;
+        color: rgb(244, 20, 4);
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">01</h1>
+                        <p>Take picture of your food</p>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-4 text-center">
+                    <div class="serv-box">
+                        <div class="icon">
+                            <i class="bi bi-cloud-arrow-up-fill"></i>
+                        </div>
+                       <h1 style="font-size: xxx-large;
+        color: rgb(244, 20, 4);
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">02</h1>
+                        <p>Upload the food picture</p>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-4 text-center">
+                    <div class="serv-box">
+                        <div class="icon">
+                            <i class="bi bi-card-list"></i>
+                        </div>
+                       <h1 style="font-size: xxx-large;
+        color: rgb(244, 20, 4);
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">03</h1>
+                        <p>Know the Nutrients level present in your food</p>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <br>
+            <center>
+                {% if session['username'] %}
+    <a href="/uploader" class="btn btn-outline-primary" role="button" aria-pressed="true">  TRY NOW </a>
+    {% endif %}
+  </center>
+	</div>
+</div>
+
+</section>
+
+
+<footer id="aboutus">
+        <div class="container">
+            <div class="row pb-4">
+                <div class="foot-info col-12 col-md-6 col-lg-9">
+                    <a class="foot-logo" href="#home">
+                        Nut<span style="color:rgb(244, 20, 4);" >#</span>
+                    </a>
+                    <div class="mail">
+                        <i class="fas fa-envelope"></i>
+                        <a href="mailto:manishankar728@gmail.com">manishankar728@gmail.com</a>
+                    </div>
+                    <div class="mail">
+                       <p>Contact Us: +91 12345 67890</p>
+                    </div>
+                </div>
+            </div>
+    </footer>
+{% endblock %}
